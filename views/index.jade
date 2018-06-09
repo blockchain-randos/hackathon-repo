@@ -1,5 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.top
+
+  div.container
+    div.content
+    form.form-horizontal(method="post", id="loginForm")
+      label Email Address
+      input.span3(id="email", type="text", name="User", placeholder="Enter your email address")
+      label Password
+      input.span3(id="password", type="password", name="Password")
+      input.btn(type="submit", value="Log In")
+
+  div.footer
