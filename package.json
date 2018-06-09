@@ -1,0 +1,22 @@
+{
+  "name": "hackathon-repo",
+  "version": "1.0.0",
+  "description": "team blockchain randos --> our repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockchain-randos/hackathon-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockchain-randos/hackathon-repo/issues"
+  },
+  "homepage": "https://github.com/blockchain-randos/hackathon-repo#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
