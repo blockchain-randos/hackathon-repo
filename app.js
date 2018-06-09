@@ -14,7 +14,11 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+<<<<<<< HEAD
 app.set('view engine', 'ejs');
+=======
+app.set('view engine', 'pug');
+>>>>>>> 8330868b7305d775444d8bc99f2242068be5e3d7
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -35,7 +39,7 @@ const Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 
-mongoose.connect('mongod://localhost/passport_local_mongoose_express4')
+mongoose.connect('mongodb://localhost:/auth')
 
 app.use((req,res,next)=>{
   let err = new Error('Not Found');

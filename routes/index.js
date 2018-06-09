@@ -5,7 +5,6 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next)=>{
-  console.log("hello");
   res.render('index', { user: req.user });
 });
 
@@ -14,15 +13,16 @@ router.get('/register',(req,res)=>{
 })
 
 router.post('/register',(req,res)=>{
-  Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
-        if (err) {
-            return res.render('register', { account : account });
-        }
+  console.log("req.body.username",req.body.username)
+  console.log("req.body.password",req.body.password)
+  Account.register(new Account({ username : req.body.username }), req.body.password, (err, account)=> {
+    if (err) { return res.render('register', { account : account }); }
 
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
-        });
+    passport.authenticate('local')(req, res, ()=>{
+      res.redirect('/');
     });
+  });
+
 });
 
 router.get('/login', function(req, res) {
