@@ -14,11 +14,7 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-<<<<<<< HEAD
 app.set('view engine', 'ejs');
-=======
-app.set('view engine', 'pug');
->>>>>>> 8330868b7305d775444d8bc99f2242068be5e3d7
 
 app.use(logger('dev'));
 app.use(express.json());
