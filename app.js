@@ -34,6 +34,7 @@ app.use('/', routes);
 const Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 mongoose.connect('mongodb://localhost:/auth')
 
@@ -42,17 +43,6 @@ app.use((req,res,next)=>{
   err.status = 404;
   next(err);
 })
-
-//handles development environment
-if ( app.get('env') === 'development' ) {
-  app.use((err,req,res,next)=>{
-    res.status(err.status || 500)
-    res.render('error', {
-      message: err.message,
-      error:err
-    })
-  })
-}
 
 //handles development environment
 if ( app.get('env') === 'development' ) {

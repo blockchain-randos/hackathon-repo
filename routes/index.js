@@ -16,30 +16,34 @@ router.post('/register',(req,res)=>{
   console.log("req.body.username",req.body.username)
   console.log("req.body.password",req.body.password)
   Account.register(new Account({ username : req.body.username }), req.body.password, (err, account)=> {
+    console.log("you're inside new Account")
     if (err) { return res.render('register', { account : account }); }
 
+    init();
     passport.authenticate('local')(req, res, ()=>{
+      console.log("you successful authenticated!")
       res.redirect('/');
     });
   });
 
 });
 
-router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+router.get('/login', (req, res)=> {
+  console.log("arrived at the login page");
+  res.render('login', { user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+router.post('/login', passport.authenticate('local'), (req, res)=> {
+  res.redirect('/');
 });
 
-router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
+router.get('/logout', (req, res)=> {
+  req.logout();
+  res.redirect('/');
 });
 
-router.get('/ping', function(req, res){
-    res.status(200).send("pong!");
+router.get('/ping', (req, res)=>{
+  res.status(200).send("pong!");
 });
 
 module.exports = router;
